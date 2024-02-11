@@ -2,7 +2,6 @@
 # Create an application/program for a BMI Calculator.
 # You can use the tkinter library for the interface, store a few users' data in a file and use matplotlib to display the BMI chart.
 # You may choose to display it as a pie chart(percentage of people overweight/underweight/normal/obese)or bar chart.
-
 import csv
 import matplotlib.pyplot as plt
 import tkinter
