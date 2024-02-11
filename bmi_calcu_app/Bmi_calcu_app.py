@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import tkinter
 from tkinter import messagebox
 
+# function calculate BMI
 def calculator():
     usr_height = height_txt.get()
     usr_weight = weight_txt.get()
@@ -16,13 +17,38 @@ def calculator():
     else:
         with open("bmilist.csv", "a") as bmi_file:
             bmi = float(usr_weight) / (float(usr_height) * float(usr_height))
-            bmi_file.write(f"{str(bmi):.2f}\n")
+            bmi_file.write(f"{bmi:.2f}\n")
         tkinter.messagebox.showinfo(title="Success", message="Saved")
 
+# read data from a CSV file and store it in a list
+bmi_list = []
+with open("bmilist.csv", "r") as read_file:
+    reader = csv.reader(read_file)
+    for row in reader:
+        bmi_list.append(row)
 
+num_status = {"Obese": 0, "Overweight": 0, "Normal": 0, "Underweight": 0}
 
+for bmi_data in bmi_list:
+    bmi = float(bmi_data[0])
+    if bmi > 30.0:
+        num_status["Obese"] += 1
+    elif bmi > 25.0:
+        num_status["Overweight"] += 1
+    elif bmi > 18.5:
+        num_status["Normal"] += 1
+    elif bmi <= 18.5:
+        num_status["Underweight"] += 1
 
+# ---------- Pie Chart ----------
+numbers = list(num_status.values())
+labels = list(num_status.keys())
 
+fig, ax = plt.subplots()
+ax.pie(numbers, labels=labels, autopct='%1.1f%%')
+plt.show()
+
+# ---------- GUI ----------
 window = tkinter.Tk()
 window.title('BMI Calculator')
 frame = tkinter.Frame(window)
