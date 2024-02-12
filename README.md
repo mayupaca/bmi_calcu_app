@@ -5,9 +5,6 @@ The BMI Calculator App is a simple BMI calculator application created in Python.
 1. Clone or download the project.
 2. Ensure Python is installed (version 3.6 or later recommended).
 3. Install the required libraries: matplotlib, tkinter.
-```
-pip install matplotlib
-```
 4. Run bmi_calculator.py.
 5. Input user information (height and weight) and click the "Calculate" button.
 6. The BMI value will be calculated and saved. Statistical information about BMI values will be displayed with graphs.
