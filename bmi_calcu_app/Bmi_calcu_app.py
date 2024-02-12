@@ -29,7 +29,6 @@ def show_bmi_chart():
     ax.pie(numbers, labels=labels, autopct='%1.1f%%')
     plt.show()
 
-
 # read data from a CSV file and store it in a list
 bmi_list = []
 with open("bmilist.csv", "r") as read_file:
@@ -49,7 +48,7 @@ for bmi in bmi_list:
     elif bmi <= 18.5:
         num_status["Underweight"] += 1
 
-# ---------- GUI --------------------------------------------------------------------
+################## GUI ##############################################
 window = tkinter.Tk()
 window.title('BMI Calculator')
 frame = tkinter.Frame(window)
@@ -69,6 +68,7 @@ weight_label.grid(row=1, column=0, padx=10, pady=10)
 weight_txt = tkinter.Entry(user_info)
 weight_txt.grid(row=1, column=1, padx=10, pady=10)
 
+# ---------- Calculate button ----------
 calcu_button = tkinter.Button(frame, text="Calculate", command=calculator)
 calcu_button.grid(row=2,column=0)
 
@@ -76,7 +76,7 @@ calcu_button.grid(row=2,column=0)
 bmi_label = tkinter.Label(frame, text="", foreground="black")
 bmi_label.grid(row=3, column=0, pady=10)
 
-# ---------- Pie Chart ---------
+# ---------- Chart button ---------
 show_bmi_button = tkinter.Button(frame, text="Show BMI Chart", command=show_bmi_chart)
 show_bmi_button.grid(row=4, column=0, pady=10)
 
